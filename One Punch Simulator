@@ -63,7 +63,7 @@ folder:AddList({text = "Select Quest",flag = "list" , value = "Normal",values = 
 	Quests = bool
 end})
 local Quest
-folder:AddToggle({text = "Auto Speed",state =false ,callback = function(bool) 
+folder:AddToggle({text = "Auto Quest",state =false ,callback = function(bool) 
 	Quest = bool
 end})
 
