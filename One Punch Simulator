@@ -48,6 +48,9 @@ local Farm
 folder:AddToggle({text = "Auto Farm",state =false ,callback = function(bool) 
 	Farm = bool
 end})
+
+
+
 local Strength
 folder:AddToggle({text = "Auto Strength",state =false ,callback = function(bool) 
 	Strength = bool
@@ -66,9 +69,80 @@ local Quest
 folder:AddToggle({text = "Auto Quest",state =false ,callback = function(bool) 
 	Quest = bool
 end})
+local Teleports = Window:AddFolder('Pet')
+local open
+folder:AddToggle({text = "Auto Open",state =false ,callback = function(bool) 
+	open = bool
+end})
+local del
+folder:AddToggle({text = "Auto Delete",state =false ,callback = function(bool) 
+	del = bool
+end})
+
+spawn(function() 
+    while wait() do 
+	if open then
+            local args = {
+		    [1] = "Lunar",
+		    [2] = "Triple"
+		}
+
+	   game:GetService("ReplicatedStorage").RemoteEvents.EggOpened:InvokeServer(unpack(args))
+        end
+    end
+end)
+spawn(function() 
+    while wait() do 
+	if del then
+           
+		local l__Pets__1 = game.Players.LocalPlayer:WaitForChild("Pets", math.huge);
+		function GetFolderFromPetID(p1)
+			local v1, v2, v3 = pairs(l__Pets__1:GetChildren());
+			while true do
+				local v4, v5 = v1(v2, v3);
+				if v4 then
+
+				else
+					break;
+				end;
+				v3 = v4;
+				if v5.PetID.Value == p1 then
+					return v5;
+				end;	
+			end;
+			return nil;
+		end;
+		local u2 = false;
+		local l__ReplicatedStorage__3 = game.ReplicatedStorage;
+		if u2 then
+		    return;
+		end;
+		local script = Plr.PlayerGui.Main.PetInventory.SideFrame.AutoDeleteFrame.Delete.onClick
+		u2 = true;
+		local v6 = {};
+		for v7, v8 in pairs(Plr.PlayerGui.Main.PetInventory.MainFrame.Inventory:GetChildren()) do
+		    if v8:IsA("Frame") then
+			local l__PetID__9 = v8.PetID;
+			local v10 = GetFolderFromPetID(l__PetID__9.Value);
+			if v10 and (l__ReplicatedStorage__3.Pets.Rarities:FindFirstChild(l__ReplicatedStorage__3.Pets.Models:FindFirstChild(v10.Name).Settings.Rarity.Value).Order.Value <= script.Parent.HigherNumberRarity.Value and v10.Equipped.Value == false) then
+			    v6[#v6 + 1] = l__PetID__9.Value;
+			end;
+		    end;
+		end;
+		for v11, v12 in pairs(v6) do
+		    spawn(function()
+			l__ReplicatedStorage__3.RemoteEvents.PetActionRequest:InvokeServer("Delete", {
+			    PetID = v12
+			});
+		    end);
+		end;
+		u2 = false;
 
 
 
+        end
+    end
+end)
 local Window = Library:CreateWindow("Other")
 local Teleports = Window:AddFolder('Teleports')
 
