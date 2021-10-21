@@ -71,11 +71,11 @@ folder:AddToggle({text = "Auto Quest",state =false ,callback = function(bool)
 end})
 local Teleports = Window:AddFolder('Pet')
 local open
-folder:AddToggle({text = "Auto Open",state =false ,callback = function(bool) 
+Teleports:AddToggle({text = "Auto Open",state =false ,callback = function(bool) 
 	open = bool
 end})
 local del
-folder:AddToggle({text = "Auto Delete",state =false ,callback = function(bool) 
+Teleports:AddToggle({text = "Auto Delete",state =false ,callback = function(bool) 
 	del = bool
 end})
 
