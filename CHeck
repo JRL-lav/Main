@@ -401,7 +401,7 @@ function Libary:Create(Name)
 
 
         function TabFunctions:Separate(Text)
-            Main:Space("")
+            Folders:Space("")
             local Frame = Instance.new("Frame")
             local Frame_2 = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
@@ -430,7 +430,7 @@ function Libary:Create(Name)
             TextLabel.TextSize = 20.000
             TextLabel.Text = "\227\128\138  " .. (Text or "CAT") .. "  \227\128\139"
             TextLabel.AutomaticSize = Enum.AutomaticSize.X
-            Main:Space("")
+            Folders:Space("")
         end
 
         
