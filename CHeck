@@ -401,7 +401,12 @@ function Libary:Create(Name)
 
 
         function TabFunctions:Separate(Text)
-            Folders:Space("")
+	  	 local Frame = Instance.new("Frame")
+            Frame.Parent = PagesHolder
+            Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Frame.BackgroundTransparency = 1.000
+            Frame.Size = UDim2.new(1, 0, 0, 10)
+
             local Frame = Instance.new("Frame")
             local Frame_2 = Instance.new("Frame")
             local TextLabel = Instance.new("TextLabel")
@@ -430,7 +435,13 @@ function Libary:Create(Name)
             TextLabel.TextSize = 20.000
             TextLabel.Text = "\227\128\138  " .. (Text or "CAT") .. "  \227\128\139"
             TextLabel.AutomaticSize = Enum.AutomaticSize.X
-            Folders:Space("")
+            
+	     local Frame = Instance.new("Frame")
+            Frame.Parent = PagesHolder
+            Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            Frame.BackgroundTransparency = 1.000
+            Frame.Size = UDim2.new(1, 0, 0, 10)
+
         end
 
         
